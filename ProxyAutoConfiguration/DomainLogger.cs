@@ -24,6 +24,11 @@ public class DomainLogger
         WriteLine("설정이 완료됬습니다");
     }
 
+    public void ResetProxy()
+    {
+        WriteLine("프록시 설정을 해제했습니다");
+    }
+
     public void ExceptionCaused(Exception ex)
     {
         WriteLine(ex.ToString());
