@@ -12,10 +12,10 @@ public class DomainLogger
         WriteLine("게이트웨이 아이피가 존재하지 않습니다");
     }
 
-    public void SetProxyHost(string ip, int port)
+    public void SetProxyHost(string address, int port)
     {
         WriteLine("프록시 호스트를 설정합니다");
-        WriteLine($"ip: {ip}");
+        WriteLine($"address: {address}");
         WriteLine($"port: {port}\n");
     }
 

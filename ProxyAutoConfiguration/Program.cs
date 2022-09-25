@@ -1,6 +1,6 @@
-﻿using ProxyAutoConfiguration;
-using System.Net;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+
+namespace ProxyAutoConfiguration;
 
 class Program
 {
@@ -21,15 +21,15 @@ class Program
         {
             try
             {
-                var ip = proxyIpRetriever.GetFirstGatewayIpv4IpAsProxyIpOrNull();
-                if (ip == null)
+                var address = proxyIpRetriever.GetProxyAddress(config);
+                if (address == null)
                 {
                     logger.IpNotFound();
                 }
                 else
                 {
-                    logger.SetProxyHost(ip, config.Port);
-                    proxyHelper.SetProxy(ip, config.Port);
+                    logger.SetProxyHost(address, config.Port);
+                    proxyHelper.SetProxy(address, config.Port);
                     logger.ProxySettingFinished();
                 }
             }

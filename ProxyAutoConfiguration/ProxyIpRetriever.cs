@@ -6,7 +6,15 @@ namespace ProxyAutoConfiguration;
 
 public class ProxyIpRetriever
 {
-    public string? GetFirstGatewayIpv4IpAsProxyIpOrNull()
+    public string? GetProxyAddress(Config config)
+    {
+        var ip = GetFirstGatewayIpv4IpAsProxyIpOrNull();
+        if (ip == null) return null;
+
+        return config.UseSocks ? $"socks://{ip}" : ip;
+    }
+
+    private string? GetFirstGatewayIpv4IpAsProxyIpOrNull()
     {
         return NetworkInterface.GetAllNetworkInterfaces()
             .SelectMany(adapter => adapter.GetIPProperties().GatewayAddresses)
